@@ -1,10 +1,9 @@
-package com.zhangCai.todayeat.view
+package com.ampere.todayeat.view
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment //自己加的
-//import android.support.v4.app.DialogFragment
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
@@ -13,8 +12,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
-import com.zhangCai.todayeat.R
-import com.zhangCai.todayeat.util.DisplayUtils.dp2px
+import com.ampere.todayeat.R
+import com.ampere.todayeat.util.DisplayUtils.dp2px
 
 /**
  * 添加菜单项的弹出框

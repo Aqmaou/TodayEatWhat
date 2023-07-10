@@ -1,4 +1,4 @@
-package com.zhangCai.todayeat.activity
+package com.ampere.todayeat.activity
 
 import android.animation.*
 import android.annotation.SuppressLint
@@ -19,12 +19,12 @@ import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.zhangCai.todayeat.R
-import com.zhangCai.todayeat.adapter.MenuAdapter
-import com.zhangCai.todayeat.util.DefaultValueUtil
-import com.zhangCai.todayeat.util.SPUtils
-import com.zhangCai.todayeat.view.AddDialog
-import com.zhangCai.todayeat.view.AddDialog.InputResultListener
+import com.ampere.todayeat.R
+import com.ampere.todayeat.adapter.MenuAdapter
+import com.ampere.todayeat.util.DefaultValueUtil
+import com.ampere.todayeat.util.SPUtils
+import com.ampere.todayeat.view.AddDialog
+import com.ampere.todayeat.view.AddDialog.InputResultListener
 import java.lang.ref.WeakReference
 import java.util.*
 import kotlin.collections.ArrayList

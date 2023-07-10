@@ -1,4 +1,4 @@
-package com.zhangCai.todayeat.adapter
+package com.ampere.todayeat.adapter
 
 import android.content.Context
 import android.util.Log
@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
-import com.zhangCai.todayeat.R
-import com.zhangCai.todayeat.util.DefaultValueUtil
+import com.ampere.todayeat.R
+import com.ampere.todayeat.util.DefaultValueUtil
 import java.util.*
 
 

@@ -1,4 +1,4 @@
-package com.zhangCai.todayeat
+package com.ampere.todayeat
 
 import org.junit.Assert
 import org.junit.Test

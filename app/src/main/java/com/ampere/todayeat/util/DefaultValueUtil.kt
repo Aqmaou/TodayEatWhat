@@ -1,6 +1,6 @@
-package com.zhangCai.todayeat.util
+package com.ampere.todayeat.util
 
-import com.zhangCai.todayeat.R
+import com.ampere.todayeat.R
 
 /**
  * 默认固定的数值

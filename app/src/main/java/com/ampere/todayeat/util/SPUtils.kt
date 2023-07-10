@@ -1,4 +1,4 @@
-package com.zhangCai.todayeat.util
+package com.ampere.todayeat.util
 
 import android.content.Context
 import android.content.SharedPreferences
