@@ -4,8 +4,6 @@ import com.ampere.todayeat.R
 
 /**
  * 默认固定的数值
- * Author: zhangmiao
- * Date: 2018/11/21
  */
 object DefaultValueUtil {
     /**

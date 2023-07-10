@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
                 val mVibrator = ContextCompat.getSystemService(applicationContext, Vibrator::class.java)
                 mVibrator?.vibrate(VibrationEffect.createOneShot(1000, VibrationEffect.DEFAULT_AMPLITUDE))
         */
-
+        @Suppress("DEPRECATION")
         mVibrator = getSystemService(VIBRATOR_SERVICE) as Vibrator
     }
 

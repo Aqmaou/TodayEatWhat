@@ -5,8 +5,6 @@ import android.content.SharedPreferences
 
 /**
  * SharedPreferences存储或获取数据
- * Author: zhangmiao
- * Date: 2018/10/23
  */
 object SPUtils {
     private var sSp: SharedPreferences? = null

@@ -16,8 +16,6 @@ import java.util.*
 
 /**
  * 菜单列表的adapter
- * Author: zhangmiao
- * Date: 2018/10/8
  */
 class MenuAdapter(//上下文
     private val mContext: Context
@@ -74,7 +72,7 @@ class MenuAdapter(//上下文
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var view = convertView
-        var menuHolder: MenuHolder? = null //后续自主添加
+        var menuHolder: MenuHolder?  //后续自主添加
         if (view == null) {
             // 如果 convertView 为 null，创建一个新的视图对象
             view = LayoutInflater.from(parent.context).inflate(R.layout.grid_menu_item, parent, false)
@@ -146,10 +144,7 @@ class MenuAdapter(//上下文
      */
     fun delete(): List<Int> {
         val deleteList: MutableList<Int> = ArrayList()
-//        Collections.sort(mItemChooseList) //后续的5个mItemChooseList均以被替换成mutableList
-/*        val mutableList = deleteList.toMutableList()
-7.10隐藏
-        mutableList.sort()*/
+
         mItemChooseList!!.sort()
         for (i in mItemChooseList.indices.reversed()){
             val index = mItemChooseList[i].toInt()
@@ -158,15 +153,7 @@ class MenuAdapter(//上下文
         }
         mItemChooseList.clear()
         notifyDataSetChanged()
-/*        if (mutableList != null && mutableList.size > 0) { 7.10隐藏
-            for (i in mutableList.indices.reversed()) {
-                val index = mutableList[i].toInt()
-                deleteList.add(index)
-                mData!!.removeAt(index)
-            }
-            mutableList.clear()
-            notifyDataSetChanged()
-        }*/
+
         return deleteList
     }
 

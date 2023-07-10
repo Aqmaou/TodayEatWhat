@@ -17,8 +17,6 @@ import com.ampere.todayeat.util.DisplayUtils.dp2px
 
 /**
  * 添加菜单项的弹出框
- * Author: zhangmiao
- * Date: 2018/10/8
  */
 class AddDialog : DialogFragment() {
     var et_name: EditText? = null //输入框

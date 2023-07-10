@@ -4,7 +4,6 @@ import android.content.Context
 
 /**
  * 像素单位之间的转换
- * Created by zhangmiao on 2018/11/26.
  */
 object DisplayUtils {
     /**
