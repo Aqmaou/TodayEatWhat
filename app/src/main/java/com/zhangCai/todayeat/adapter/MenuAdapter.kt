@@ -147,9 +147,18 @@ class MenuAdapter(//上下文
     fun delete(): List<Int> {
         val deleteList: MutableList<Int> = ArrayList()
 //        Collections.sort(mItemChooseList) //后续的5个mItemChooseList均以被替换成mutableList
-        val mutableList = deleteList.toMutableList()
-        mutableList.sort()
-        if (mutableList != null && mutableList.size > 0) {
+/*        val mutableList = deleteList.toMutableList()
+7.10隐藏
+        mutableList.sort()*/
+        mItemChooseList!!.sort()
+        for (i in mItemChooseList.indices.reversed()){
+            val index = mItemChooseList[i].toInt()
+            deleteList.add(index)
+            mData!!.removeAt(index)
+        }
+        mItemChooseList.clear()
+        notifyDataSetChanged()
+/*        if (mutableList != null && mutableList.size > 0) { 7.10隐藏
             for (i in mutableList.indices.reversed()) {
                 val index = mutableList[i].toInt()
                 deleteList.add(index)
@@ -157,7 +166,7 @@ class MenuAdapter(//上下文
             }
             mutableList.clear()
             notifyDataSetChanged()
-        }
+        }*/
         return deleteList
     }
 
@@ -166,6 +175,7 @@ class MenuAdapter(//上下文
      */
     fun cancelDelete() {
         mShowChoose = false
+        mItemChooseList!!.clear() //mItemChooseList
         notifyDataSetChanged()
     }
 

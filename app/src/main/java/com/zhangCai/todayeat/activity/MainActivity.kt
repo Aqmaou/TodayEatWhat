@@ -19,7 +19,6 @@ import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import com.zhangCai.todayeat.R
 import com.zhangCai.todayeat.adapter.MenuAdapter
 import com.zhangCai.todayeat.util.DefaultValueUtil
@@ -28,6 +27,7 @@ import com.zhangCai.todayeat.view.AddDialog
 import com.zhangCai.todayeat.view.AddDialog.InputResultListener
 import java.lang.ref.WeakReference
 import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.math.abs
 
 
@@ -89,10 +89,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
         @Suppress("DEPRECATION")
         mSoundPool = SoundPool(1, AudioManager.STREAM_SYSTEM, 5)
         mSoundPool!!.load(this, R.raw.shake, 1)
-/*
-        val mVibrator = ContextCompat.getSystemService(applicationContext, Vibrator::class.java)
-        mVibrator?.vibrate(VibrationEffect.createOneShot(1000, VibrationEffect.DEFAULT_AMPLITUDE))
-*/
+        /*
+                val mVibrator = ContextCompat.getSystemService(applicationContext, Vibrator::class.java)
+                mVibrator?.vibrate(VibrationEffect.createOneShot(1000, VibrationEffect.DEFAULT_AMPLITUDE))
+        */
 
         mVibrator = getSystemService(VIBRATOR_SERVICE) as Vibrator
     }
@@ -154,13 +154,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
         tv_shakeTips = findViewById<View>(R.id.activity_main_shake_tips_tv) as TextView
         iv_add!!.setOnClickListener(this)
         mMenuAdapter = MenuAdapter(applicationContext)
-/*        mMenuAdapter!!.setOnChooseListener { size ->
-            showDeleteAndHideAddHead()
-            if(tv_chooseCount != null){
-                tv_chooseCount?.text = "已选择 $size 项" ?: "并没有选择"
-            }
+        /*        mMenuAdapter!!.setOnChooseListener { size ->
+                    showDeleteAndHideAddHead()
+                    if(tv_chooseCount != null){
+                        tv_chooseCount?.text = "已选择 $size 项" ?: "并没有选择"
+                    }
 
-        }*/
+                }*/
         mMenuAdapter?.setOnChooseListener(object : MenuAdapter.OnChooseListener {
             @SuppressLint("SetTextI18n")
             fun onChoose() {
@@ -284,20 +284,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
     private fun delete() {
         if (mMenuAdapter != null) {
             val deleteList = mMenuAdapter!!.delete()
+//            mMenuAdapter!!.count = mMenuAdapter!!.count - deleteList.size
             if (deleteList.isNotEmpty() && mMenuAdapter!!.count > 0) {
                 animateReorder(deleteList, mMenuAdapter!!.count)
-            } else{
-                // 所有菜单项都已删除，更新界面显示 7.10增加
-                showAddAndHideDeleteHead()
+                mMenuAdapter?.notifyDataSetChanged() //刷新GridView的子项视图
                 showMenuOrEmpty()
             }
-            mMenuAdapter?.notifyDataSetChanged() //刷新GridView的子项视图
         }
         saveData()
-/*        showMenuOrEmpty() 7.10隐藏
+        //showMenuOrEmpty() 7.10隐藏
         if (mMenuAdapter != null && mMenuAdapter!!.count == 0) {
             showAddAndHideDeleteHead()
-        }*/
+        }
     }
 
     private fun showAddAndHideDeleteHead() {
@@ -329,7 +327,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
         if (deleteList.isNullOrEmpty() || itemCount < 1) {
             return
         }
-        val list: MutableList<*> = ArrayList<Any?>()
+        val list: MutableList<Animator> = ArrayList()
         val mutableList = deleteList.toMutableList()
         mutableList.sort()
 
@@ -409,7 +407,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
     private fun createAnimator(
         view: View, startX: Float,
         endX: Float, startY: Float, endY: Float
-    ): Nothing {
+    ): AnimatorSet {
         val animX = ObjectAnimator.ofFloat(
             view, "translationX",
             startX, endX
@@ -420,7 +418,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
         )
         val animSetXY = AnimatorSet()
         animSetXY.playTogether(animX, animY)
-        return animSetXY as Nothing
+        return animSetXY
     }
 
     /**
@@ -484,10 +482,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
                 }
 
 
-/*                fun showPrompt(message: String) {
-                    isCanShake = true
-                    Toast.makeText(this@MainActivity, message, Toast.LENGTH_SHORT).show()
-                }*/
+                /*                fun showPrompt(message: String) {
+                                    isCanShake = true
+                                    Toast.makeText(this@MainActivity, message, Toast.LENGTH_SHORT).show()
+                                }*/
             })
         } else {
             if (mDialog!!.isVisible) {
@@ -613,8 +611,4 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
         private var sNoncompatDensity = 0f
         private var sNoncompatScaleDensity = 0f
     }
-}
-
-private fun AnimatorSet.playTogether(list: MutableList<*>) {
-    TODO("好像这个函数没啥用")
 }

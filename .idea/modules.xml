@@ -3,10 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Android.TodayEat-master.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Android.TodayEat-master.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Android.TodayEat-master.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Android.TodayEat-master.app.androidTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Android.TodayEat-master.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Android.TodayEat-master.app.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Android.TodayEat-master.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Android.TodayEat-master.app.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/TodayEat-master.iml" filepath="$PROJECT_DIR$/.idea/modules/TodayEat-master.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/TodayEat-master.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/TodayEat-master.app.androidTest.iml" />
     </modules>
   </component>
 </project>
