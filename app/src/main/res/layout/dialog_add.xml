@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dialog_add_width"
+    android:layout_height="@dimen/dialog_add_height"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dialog_add_text_margin_top_left"
+        android:layout_marginTop="@dimen/dialog_add_text_margin_top_left"
+        android:text="@string/add"
+        android:textColor="@color/text_shake_tips"
+        android:textSize="@dimen/dialog_add_text_size" />
+
+    <EditText
+        android:id="@+id/dialog_add_name_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dialog_add_text_margin_top_left"
+        android:layout_marginRight="@dimen/dialog_add_text_margin_top_left"
+        android:layout_marginTop="@dimen/dialog_add_text_margin_top_left"
+        android:background="@drawable/edit_bg"
+        android:hint="@string/please_input_name"
+        android:padding="@dimen/dialog_add_name_padding"
+        android:singleLine="true"
+        android:textColor="@color/add_name_text_color"
+        android:textColorHint="@color/add_name_text_color_hint"
+        android:textSize="@dimen/dialog_add_text_size" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dialog_add_layout_margin_left_right"
+        android:layout_marginRight="@dimen/dialog_add_layout_margin_left_right"
+        android:layout_marginTop="@dimen/dialog_add_layout_margin_top">
+
+        <TextView
+            android:id="@+id/dialog_add_cancel_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/cancel"
+            android:textColor="@color/add_cancel_text_color"
+            android:textSize="@dimen/dialog_add_text_size" />
+
+
+        <TextView
+            android:id="@+id/dialog_add_sure_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:text="@string/sure"
+            android:textColor="@color/text_shake_tips"
+            android:textSize="@dimen/dialog_add_text_size" />
+    </RelativeLayout>
+</LinearLayout>
