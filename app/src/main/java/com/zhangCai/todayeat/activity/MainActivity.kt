@@ -529,6 +529,20 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
                 END_SHAKE -> {
                     mActivity!!.isShake = false
                     mActivity!!.shake()
+
+                    //接下来的应用由自己设计，解决摇一摇后会持续触发ShakeHandle函数
+                    // 移除传感器监听器
+                    mActivity!!.mSensorManager?.unregisterListener(mActivity!!)
+
+                    // 重新注册传感器监听器（延迟一定时间）
+                    postDelayed({
+                        mActivity!!.mSensorManager?.registerListener(
+                            mActivity,
+                            mActivity!!.mAccelerometerSensor,
+                            SensorManager.SENSOR_DELAY_UI
+                        )
+                    }, 1000) // 这里的延迟时间可以根据需要进行调整
+                    //在END_SHAKE设置一定延迟，保证不会一直触发
                 }
 
                 else -> {}
