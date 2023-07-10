@@ -59,6 +59,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
     private var mAccelerometerSensor: Sensor? = null
     private var isShake = false
     private var mShakeHandle: ShakeHandle? = null
+    private var isShakeEnabled = true //标志是否允许触发摇一摇，后来添加 7.10
     var mSoundPool: SoundPool? = null
     var mVibrator: Vibrator? = null //震动服务
     var isCanShake = false //是否可以摇一摇
@@ -118,6 +119,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
             //            if ((Math.abs(x) > 17 || Math.abs(y) > 17 || Math.abs(z) > 17) && !isShake) {
             if ((abs(x) > 4 || abs(y) > 17 || abs(z) > 4) && !isShake) {
                 isShake = true
+                isShakeEnabled = false //设置标志位false，禁止触发摇一摇 7.10加
                 val thread: Thread = object : Thread() {
                     override fun run() {
                         super.run()
@@ -129,6 +131,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
                             mShakeHandle!!.obtainMessage(ShakeHandle.END_SHAKE).sendToTarget()
                         } catch (e: InterruptedException) {
                             e.printStackTrace()
+                        } finally {
+                            isShakeEnabled = true //重新设置标志为 true,表示允许触发摇一摇
                         }
                     }
                 }
@@ -282,13 +286,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
             val deleteList = mMenuAdapter!!.delete()
             if (deleteList.isNotEmpty() && mMenuAdapter!!.count > 0) {
                 animateReorder(deleteList, mMenuAdapter!!.count)
+            } else{
+                // 所有菜单项都已删除，更新界面显示 7.10增加
+                showAddAndHideDeleteHead()
+                showMenuOrEmpty()
             }
+            mMenuAdapter?.notifyDataSetChanged() //刷新GridView的子项视图
         }
         saveData()
-        showMenuOrEmpty()
+/*        showMenuOrEmpty() 7.10隐藏
         if (mMenuAdapter != null && mMenuAdapter!!.count == 0) {
             showAddAndHideDeleteHead()
-        }
+        }*/
     }
 
     private fun showAddAndHideDeleteHead() {
